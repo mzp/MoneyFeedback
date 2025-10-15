@@ -21,6 +21,11 @@
 			path = Configurations;
 			sourceTree = "<group>";
 		};
+		13D1C9C82EA0659F00C65B09 /* .github */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = .github;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +42,7 @@
 		13750B542EA05FFB00E6673F = {
 			isa = PBXGroup;
 			children = (
+				13D1C9C82EA0659F00C65B09 /* .github */,
 				13D1C9BC2EA0614800C65B09 /* Configurations */,
 				13750B5F2EA05FFB00E6673F /* MoneyFeedback */,
 				13750B5E2EA05FFB00E6673F /* Products */,
@@ -69,6 +75,7 @@
 			fileSystemSynchronizedGroups = (
 				13750B5F2EA05FFB00E6673F /* MoneyFeedback */,
 				13D1C9BC2EA0614800C65B09 /* Configurations */,
+				13D1C9C82EA0659F00C65B09 /* .github */,
 			);
 			name = MoneyFeedback;
 			packageProductDependencies = (
