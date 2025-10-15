@@ -30,9 +30,11 @@ jobs:
                      -configuration Release \
                      -destination generic/platform=iOS \
                      -archivePath MoneyFeedback.xcarchive \
-                     archive
+                     archive \
+                | xcpretty
           
           xcodebuild -exportArchive \
                      -archivePath MoneyFeedback.xcarchive \
                      -exportPath . \
-                     -exportOptionsPlist MoneyFeedback/ExportOptions.plist
+                     -exportOptionsPlist MoneyFeedback/ExportOptions.plist \
+                | xcpretty
