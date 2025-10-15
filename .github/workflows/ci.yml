@@ -16,6 +16,7 @@ jobs:
           xcrun --find xcodebuild
           xcrun --find swift-format
           ls /Applications
+          which xcpretty
 
       - uses: actions/checkout@v4
 
