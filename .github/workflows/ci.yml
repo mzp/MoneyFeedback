@@ -26,6 +26,7 @@ jobs:
 
       - name: Build IPA
         run: |
+          set -o pipefail
           xcodebuild -project MoneyFeedback.xcodeproj \
                      -scheme MoneyFeedback \
                      -configuration Release \
