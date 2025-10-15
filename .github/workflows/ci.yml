@@ -14,10 +14,12 @@ jobs:
         run: |
           set -x
           sw_vers
+          xcode-select -p
           xcrun --find xcodebuild
+          xcrun xcodebuild -version
           xcrun --find swift-format
-          ls /Applications
           which xcpretty
+          ls /Applications
 
       - uses: actions/checkout@v4
 
