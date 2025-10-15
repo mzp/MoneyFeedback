@@ -31,10 +31,20 @@ jobs:
                      -destination generic/platform=iOS \
                      -archivePath MoneyFeedback.xcarchive \
                      archive \
+                | tee xcodebuild-archive.log \
                 | xcpretty
-          
           xcodebuild -exportArchive \
                      -archivePath MoneyFeedback.xcarchive \
                      -exportPath . \
                      -exportOptionsPlist MoneyFeedback/ExportOptions.plist \
+                | tee xcodebuild-export.log \
                 | xcpretty
+
+      - name: Upload Build Logs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Build-Logs
+          path: |
+            xcodebuild-archive.log
+            xcodebuild-export.log
