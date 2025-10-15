@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Health check
         run: |
+          set -x
           sw_vers
           xcrun --find xcodebuild
           xcrun --find swift-format
@@ -44,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: Build-Logs
+          name: XcodeBuild-Logs
           path: |
             xcodebuild-archive.log
             xcodebuild-export.log
