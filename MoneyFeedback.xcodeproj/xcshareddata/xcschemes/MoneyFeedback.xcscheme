@@ -30,7 +30,8 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:MoneyFeedback.xctestplan">
+            reference = "container:MoneyFeedback.xctestplan"
+            default = "YES">
          </TestPlanReference>
       </TestPlans>
       <Testables>
@@ -42,6 +43,17 @@
                BlueprintIdentifier = "133053852EA0847900211918"
                BuildableName = "MoneyFeedbackTests.xctest"
                BlueprintName = "MoneyFeedbackTests"
+               ReferencedContainer = "container:MoneyFeedback.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1385EC792EA0C2AF0038F1A5"
+               BuildableName = "MoneyFeedbackInternalTests.xctest"
+               BlueprintName = "MoneyFeedbackInternalTests"
                ReferencedContainer = "container:MoneyFeedback.xcodeproj">
             </BuildableReference>
          </TestableReference>
