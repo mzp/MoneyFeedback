@@ -144,6 +144,7 @@
 			baseConfigurationReferenceAnchor = 13D1C9BC2EA0614800C65B09 /* Configurations */;
 			baseConfigurationReferenceRelativePath = Debug.xcconfig;
 			buildSettings = {
+				DEVELOPMENT_TEAM = VG2YYSKSHY;
 			};
 			name = Debug;
 		};
@@ -152,13 +153,14 @@
 			baseConfigurationReferenceAnchor = 13D1C9BC2EA0614800C65B09 /* Configurations */;
 			baseConfigurationReferenceRelativePath = Release.xcconfig;
 			buildSettings = {
+				DEVELOPMENT_TEAM = VG2YYSKSHY;
 			};
 			name = Release;
 		};
 		13750B692EA05FFD00E6673F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReferenceAnchor = 13750B5F2EA05FFB00E6673F /* MoneyFeedback */;
-			baseConfigurationReferenceRelativePath = Configurations/MoneyFeedback.xcconfig;
+			baseConfigurationReferenceRelativePath = MoneyFeedback.xcconfig;
 			buildSettings = {
 			};
 			name = Debug;
@@ -166,7 +168,7 @@
 		13750B6A2EA05FFD00E6673F /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReferenceAnchor = 13750B5F2EA05FFB00E6673F /* MoneyFeedback */;
-			baseConfigurationReferenceRelativePath = Configurations/MoneyFeedback.xcconfig;
+			baseConfigurationReferenceRelativePath = MoneyFeedback.xcconfig;
 			buildSettings = {
 			};
 			name = Release;
