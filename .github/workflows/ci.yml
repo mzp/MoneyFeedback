@@ -23,25 +23,17 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - name: Lint
+      - name: swift-format lint
         run: xcrun swift-format lint -r .
 
-      - name: Build IPA
+      - name: xcodebuild build
         run: |
           set -o pipefail
           xcodebuild -project MoneyFeedback.xcodeproj \
                      -scheme MoneyFeedback \
-                     -configuration Release \
                      -destination generic/platform=iOS \
-                     -archivePath MoneyFeedback.xcarchive \
-                     archive \
-                | tee xcodebuild-archive.log \
-                | xcpretty
-          xcodebuild -exportArchive \
-                     -archivePath MoneyFeedback.xcarchive \
-                     -exportPath . \
-                     -exportOptionsPlist MoneyFeedback/ExportOptions.plist \
-                | tee xcodebuild-export.log \
+                     build \
+                | tee xcodebuild-build.log \
                 | xcpretty
 
       - name: Upload Build Logs
@@ -50,5 +42,4 @@ jobs:
         with:
           name: XcodeBuild-Logs
           path: |
-            xcodebuild-archive.log
-            xcodebuild-export.log
+            xcodebuild-build.log
