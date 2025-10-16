@@ -11,8 +11,6 @@ import SwiftUI
 @main
 struct MoneyFeedbackApp: App {
     var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+        MoneyFeedbackScene()
     }
 }
