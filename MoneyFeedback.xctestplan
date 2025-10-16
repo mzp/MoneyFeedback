@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "524D5A1F-5051-4068-BD58-CD7EC21ED6B4",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:MoneyFeedback.xcodeproj",
+        "identifier" : "133053852EA0847900211918",
+        "name" : "MoneyFeedbackTests"
+      }
+    }
+  ],
+  "version" : 1
+}

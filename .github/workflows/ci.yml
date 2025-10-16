@@ -35,6 +35,15 @@ jobs:
                 | tee xcodebuild-build.log \
                 | xcpretty
 
+      - name: xcodebuild test
+        run: |
+          set -o pipefail && xcodebuild -project MoneyFeedback.xcodeproj \
+                     -scheme MoneyFeedback \
+                     -destination "name=iPhone 17" \
+                     test \
+                | tee xcodebuild-test.log \
+                | xcpretty
+
       - name: Upload Build Logs
         uses: actions/upload-artifact@v4
         if: always()
@@ -42,3 +51,4 @@ jobs:
           name: XcodeBuild-Logs
           path: |
             xcodebuild-build.log
+            xcodebuild-test.log
