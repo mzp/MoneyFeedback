@@ -6,11 +6,27 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		1330538A2EA0847900211918 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13750B552EA05FFB00E6673F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13750B5C2EA05FFB00E6673F;
+			remoteInfo = MoneyFeedback;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		133053862EA0847900211918 /* MoneyFeedbackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyFeedbackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13750B5D2EA05FFB00E6673F /* MoneyFeedback.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyFeedback.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		133053872EA0847900211918 /* MoneyFeedbackTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MoneyFeedbackTests;
+			sourceTree = "<group>";
+		};
 		13750B5F2EA05FFB00E6673F /* MoneyFeedback */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = MoneyFeedback;
@@ -29,6 +45,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		133053832EA0847900211918 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13750B5A2EA05FFB00E6673F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -45,6 +68,7 @@
 				13D1C9C82EA0659F00C65B09 /* .github */,
 				13D1C9BC2EA0614800C65B09 /* Configurations */,
 				13750B5F2EA05FFB00E6673F /* MoneyFeedback */,
+				133053872EA0847900211918 /* MoneyFeedbackTests */,
 				13750B5E2EA05FFB00E6673F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				13750B5D2EA05FFB00E6673F /* MoneyFeedback.app */,
+				133053862EA0847900211918 /* MoneyFeedbackTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,6 +85,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		133053852EA0847900211918 /* MoneyFeedbackTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1330538C2EA0847900211918 /* Build configuration list for PBXNativeTarget "MoneyFeedbackTests" */;
+			buildPhases = (
+				133053822EA0847900211918 /* Sources */,
+				133053832EA0847900211918 /* Frameworks */,
+				133053842EA0847900211918 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1330538B2EA0847900211918 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				133053872EA0847900211918 /* MoneyFeedbackTests */,
+			);
+			name = MoneyFeedbackTests;
+			packageProductDependencies = (
+			);
+			productName = MoneyFeedbackTests;
+			productReference = 133053862EA0847900211918 /* MoneyFeedbackTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		13750B5C2EA05FFB00E6673F /* MoneyFeedback */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13750B682EA05FFD00E6673F /* Build configuration list for PBXNativeTarget "MoneyFeedback" */;
@@ -91,9 +139,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2630;
+				LastSwiftUpdateCheck = 2610;
 				LastUpgradeCheck = 2630;
 				TargetAttributes = {
+					133053852EA0847900211918 = {
+						CreatedOnToolsVersion = 26.1;
+						TestTargetID = 13750B5C2EA05FFB00E6673F;
+					};
 					13750B5C2EA05FFB00E6673F = {
 						CreatedOnToolsVersion = 26.3;
 					};
@@ -114,11 +166,19 @@
 			projectRoot = "";
 			targets = (
 				13750B5C2EA05FFB00E6673F /* MoneyFeedback */,
+				133053852EA0847900211918 /* MoneyFeedbackTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		133053842EA0847900211918 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13750B5B2EA05FFB00E6673F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -129,6 +189,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		133053822EA0847900211918 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13750B592EA05FFB00E6673F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -138,7 +205,31 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		1330538B2EA0847900211918 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13750B5C2EA05FFB00E6673F /* MoneyFeedback */;
+			targetProxy = 1330538A2EA0847900211918 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		1330538D2EA0847900211918 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 133053872EA0847900211918 /* MoneyFeedbackTests */;
+			baseConfigurationReferenceRelativePath = MoneyFeedbackTests.xcconfig;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		1330538E2EA0847900211918 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 133053872EA0847900211918 /* MoneyFeedbackTests */;
+			baseConfigurationReferenceRelativePath = MoneyFeedbackTests.xcconfig;
+			buildSettings = {
+			};
+			name = Release;
+		};
 		13750B662EA05FFD00E6673F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReferenceAnchor = 13D1C9BC2EA0614800C65B09 /* Configurations */;
@@ -176,6 +267,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1330538C2EA0847900211918 /* Build configuration list for PBXNativeTarget "MoneyFeedbackTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1330538D2EA0847900211918 /* Debug */,
+				1330538E2EA0847900211918 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		13750B582EA05FFB00E6673F /* Build configuration list for PBXProject "MoneyFeedback" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
