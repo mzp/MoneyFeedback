@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		136298CD2EA16E8F00084846 /* MoneyFeedbackInternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1385EC722EA0C2AF0038F1A5 /* MoneyFeedbackInternal.framework */; };
 		1385EC582EA0C1460038F1A5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1385EC572EA0C1460038F1A5 /* WidgetKit.framework */; };
 		1385EC5A2EA0C1460038F1A5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1385EC592EA0C1460038F1A5 /* SwiftUI.framework */; };
 		1385EC662EA0C1470038F1A5 /* MoneyFeedbackWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1385EC552EA0C1460038F1A5 /* MoneyFeedbackWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -22,6 +23,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 13750B5C2EA05FFB00E6673F;
 			remoteInfo = MoneyFeedback;
+		};
+		136298CF2EA16E8F00084846 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13750B552EA05FFB00E6673F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1385EC712EA0C2AF0038F1A5;
+			remoteInfo = MoneyFeedbackInternal;
 		};
 		1385EC632EA0C1470038F1A5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -140,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				136298CD2EA16E8F00084846 /* MoneyFeedbackInternal.framework in Frameworks */,
 				1385EC5A2EA0C1460038F1A5 /* SwiftUI.framework in Frameworks */,
 				1385EC582EA0C1460038F1A5 /* WidgetKit.framework in Frameworks */,
 			);
@@ -265,6 +274,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				136298D02EA16E8F00084846 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				1385EC5B2EA0C1460038F1A5 /* MoneyFeedbackWidget */,
@@ -414,6 +424,11 @@
 			isa = PBXTargetDependency;
 			target = 13750B5C2EA05FFB00E6673F /* MoneyFeedback */;
 			targetProxy = 1330538A2EA0847900211918 /* PBXContainerItemProxy */;
+		};
+		136298D02EA16E8F00084846 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1385EC712EA0C2AF0038F1A5 /* MoneyFeedbackInternal */;
+			targetProxy = 136298CF2EA16E8F00084846 /* PBXContainerItemProxy */;
 		};
 		1385EC642EA0C1470038F1A5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
