@@ -1,0 +1,198 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXFileReference section */
+		13750B5D2EA05FFB00E6673F /* MoneyFeedback.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyFeedback.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		13750B5F2EA05FFB00E6673F /* MoneyFeedback */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MoneyFeedback;
+			sourceTree = "<group>";
+		};
+		13D1C9BC2EA0614800C65B09 /* Configurations */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		13D1C9C82EA0659F00C65B09 /* .github */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = .github;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		13750B5A2EA05FFB00E6673F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		13750B542EA05FFB00E6673F = {
+			isa = PBXGroup;
+			children = (
+				13D1C9C82EA0659F00C65B09 /* .github */,
+				13D1C9BC2EA0614800C65B09 /* Configurations */,
+				13750B5F2EA05FFB00E6673F /* MoneyFeedback */,
+				13750B5E2EA05FFB00E6673F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		13750B5E2EA05FFB00E6673F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13750B5D2EA05FFB00E6673F /* MoneyFeedback.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		13750B5C2EA05FFB00E6673F /* MoneyFeedback */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13750B682EA05FFD00E6673F /* Build configuration list for PBXNativeTarget "MoneyFeedback" */;
+			buildPhases = (
+				13750B592EA05FFB00E6673F /* Sources */,
+				13750B5A2EA05FFB00E6673F /* Frameworks */,
+				13750B5B2EA05FFB00E6673F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				13750B5F2EA05FFB00E6673F /* MoneyFeedback */,
+				13D1C9BC2EA0614800C65B09 /* Configurations */,
+				13D1C9C82EA0659F00C65B09 /* .github */,
+			);
+			name = MoneyFeedback;
+			packageProductDependencies = (
+			);
+			productName = MoneyFeedback;
+			productReference = 13750B5D2EA05FFB00E6673F /* MoneyFeedback.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		13750B552EA05FFB00E6673F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2630;
+				LastUpgradeCheck = 2630;
+				TargetAttributes = {
+					13750B5C2EA05FFB00E6673F = {
+						CreatedOnToolsVersion = 26.3;
+					};
+				};
+			};
+			buildConfigurationList = 13750B582EA05FFB00E6673F /* Build configuration list for PBXProject "MoneyFeedback" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 13750B542EA05FFB00E6673F;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 13750B5E2EA05FFB00E6673F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				13750B5C2EA05FFB00E6673F /* MoneyFeedback */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		13750B5B2EA05FFB00E6673F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		13750B592EA05FFB00E6673F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		13750B662EA05FFD00E6673F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 13D1C9BC2EA0614800C65B09 /* Configurations */;
+			baseConfigurationReferenceRelativePath = Debug.xcconfig;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		13750B672EA05FFD00E6673F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 13D1C9BC2EA0614800C65B09 /* Configurations */;
+			baseConfigurationReferenceRelativePath = Release.xcconfig;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		13750B692EA05FFD00E6673F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 13750B5F2EA05FFB00E6673F /* MoneyFeedback */;
+			baseConfigurationReferenceRelativePath = Configurations/MoneyFeedback.xcconfig;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		13750B6A2EA05FFD00E6673F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 13750B5F2EA05FFB00E6673F /* MoneyFeedback */;
+			baseConfigurationReferenceRelativePath = Configurations/MoneyFeedback.xcconfig;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		13750B582EA05FFB00E6673F /* Build configuration list for PBXProject "MoneyFeedback" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13750B662EA05FFD00E6673F /* Debug */,
+				13750B672EA05FFD00E6673F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13750B682EA05FFD00E6673F /* Build configuration list for PBXNativeTarget "MoneyFeedback" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13750B692EA05FFD00E6673F /* Debug */,
+				13750B6A2EA05FFD00E6673F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 13750B552EA05FFB00E6673F /* Project object */;
+}

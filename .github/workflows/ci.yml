@@ -1,0 +1,44 @@
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  macos:
+    runs-on: macos-26
+    steps:
+      - name: Health check
+        run: |
+          set -x
+          sw_vers
+          xcode-select -p
+          xcrun --find xcodebuild
+          xcrun xcodebuild -version
+          xcrun --find swift-format
+          which xcpretty
+          ls /Applications
+
+      - uses: actions/checkout@v4
+
+      - name: swift-format lint
+        run: xcrun swift-format lint -r .
+
+      - name: xcodebuild build
+        run: |
+          set -o pipefail && xcodebuild -project MoneyFeedback.xcodeproj \
+                     -scheme MoneyFeedback \
+                     -destination "generic/platform=iOS Simulator" \
+                     build \
+                | tee xcodebuild-build.log \
+                | xcpretty
+
+      - name: Upload Build Logs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: XcodeBuild-Logs
+          path: |
+            xcodebuild-build.log
