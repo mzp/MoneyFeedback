@@ -9,6 +9,7 @@ on:
 jobs:
   macos:
     runs-on: macos-26
+    timeout-minutes: 60
     steps:
       - name: Health check
         run: |
