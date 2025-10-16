@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		13D9585E2EA085CB00F740FC /* MoneyFeedback.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 13D9585D2EA085CB00F740FC /* MoneyFeedback.xctestplan */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		1330538A2EA0847900211918 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -19,6 +23,7 @@
 /* Begin PBXFileReference section */
 		133053862EA0847900211918 /* MoneyFeedbackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyFeedbackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13750B5D2EA05FFB00E6673F /* MoneyFeedback.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyFeedback.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13D9585D2EA085CB00F740FC /* MoneyFeedback.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MoneyFeedback.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -65,6 +70,7 @@
 		13750B542EA05FFB00E6673F = {
 			isa = PBXGroup;
 			children = (
+				13D9585D2EA085CB00F740FC /* MoneyFeedback.xctestplan */,
 				13D1C9C82EA0659F00C65B09 /* .github */,
 				13D1C9BC2EA0614800C65B09 /* Configurations */,
 				13750B5F2EA05FFB00E6673F /* MoneyFeedback */,
@@ -183,6 +189,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13D9585E2EA085CB00F740FC /* MoneyFeedback.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
