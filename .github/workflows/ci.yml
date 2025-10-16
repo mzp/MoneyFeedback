@@ -39,7 +39,7 @@ jobs:
         run: |
           set -o pipefail && xcodebuild -project MoneyFeedback.xcodeproj \
                      -scheme MoneyFeedback \
-                     -destination "generic/platform=iOS Simulator,name=iPhone 16" \
+                     -destination "name=iPhone 16" \
                      test \
                 | tee xcodebuild-test.log \
                 | xcpretty
