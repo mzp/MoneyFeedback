@@ -28,8 +28,7 @@ jobs:
 
       - name: xcodebuild build
         run: |
-          set -o pipefail
-          xcodebuild -project MoneyFeedback.xcodeproj \
+          set -o pipefail && xcodebuild -project MoneyFeedback.xcodeproj \
                      -scheme MoneyFeedback \
                      -destination generic/platform=iOS \
                      build \
