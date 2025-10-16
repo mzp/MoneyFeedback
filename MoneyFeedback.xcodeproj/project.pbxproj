@@ -10,6 +10,8 @@
 		1385EC582EA0C1460038F1A5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1385EC572EA0C1460038F1A5 /* WidgetKit.framework */; };
 		1385EC5A2EA0C1460038F1A5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1385EC592EA0C1460038F1A5 /* SwiftUI.framework */; };
 		1385EC662EA0C1470038F1A5 /* MoneyFeedbackWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1385EC552EA0C1460038F1A5 /* MoneyFeedbackWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1385EC852EA0C2AF0038F1A5 /* MoneyFeedbackInternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1385EC722EA0C2AF0038F1A5 /* MoneyFeedbackInternal.framework */; };
+		1385EC872EA0C2AF0038F1A5 /* MoneyFeedbackInternal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1385EC722EA0C2AF0038F1A5 /* MoneyFeedbackInternal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		13D9585E2EA085CB00F740FC /* MoneyFeedback.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 13D9585D2EA085CB00F740FC /* MoneyFeedback.xctestplan */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +30,13 @@
 			remoteGlobalIDString = 1385EC542EA0C1460038F1A5;
 			remoteInfo = MoneyFeedbackWidgetExtension;
 		};
+		1385EC832EA0C2AF0038F1A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13750B552EA05FFB00E6673F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1385EC712EA0C2AF0038F1A5;
+			remoteInfo = MoneyFeedbackInternal;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +51,17 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1385EC862EA0C2AF0038F1A5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1385EC872EA0C2AF0038F1A5 /* MoneyFeedbackInternal.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +70,7 @@
 		1385EC552EA0C1460038F1A5 /* MoneyFeedbackWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MoneyFeedbackWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		1385EC572EA0C1460038F1A5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		1385EC592EA0C1460038F1A5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		1385EC722EA0C2AF0038F1A5 /* MoneyFeedbackInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MoneyFeedbackInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13D9585D2EA085CB00F740FC /* MoneyFeedback.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MoneyFeedback.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +103,11 @@
 			path = MoneyFeedbackWidget;
 			sourceTree = "<group>";
 		};
+		1385EC732EA0C2AF0038F1A5 /* MoneyFeedbackInternal */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MoneyFeedbackInternal;
+			sourceTree = "<group>";
+		};
 		13D1C9BC2EA0614800C65B09 /* Configurations */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Configurations;
@@ -106,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1385EC852EA0C2AF0038F1A5 /* MoneyFeedbackInternal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +142,13 @@
 			files = (
 				1385EC5A2EA0C1460038F1A5 /* SwiftUI.framework in Frameworks */,
 				1385EC582EA0C1460038F1A5 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1385EC6F2EA0C2AF0038F1A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +164,7 @@
 				13750B5F2EA05FFB00E6673F /* MoneyFeedback */,
 				133053872EA0847900211918 /* MoneyFeedbackTests */,
 				1385EC5B2EA0C1460038F1A5 /* MoneyFeedbackWidget */,
+				1385EC732EA0C2AF0038F1A5 /* MoneyFeedbackInternal */,
 				1385EC562EA0C1460038F1A5 /* Frameworks */,
 				13750B5E2EA05FFB00E6673F /* Products */,
 			);
@@ -141,6 +176,7 @@
 				13750B5D2EA05FFB00E6673F /* MoneyFeedback.app */,
 				133053862EA0847900211918 /* MoneyFeedbackTests.xctest */,
 				1385EC552EA0C1460038F1A5 /* MoneyFeedbackWidgetExtension.appex */,
+				1385EC722EA0C2AF0038F1A5 /* MoneyFeedbackInternal.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -155,6 +191,16 @@
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1385EC6D2EA0C2AF0038F1A5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		133053852EA0847900211918 /* MoneyFeedbackTests */ = {
@@ -188,11 +234,13 @@
 				13750B5A2EA05FFB00E6673F /* Frameworks */,
 				13750B5B2EA05FFB00E6673F /* Resources */,
 				1385EC652EA0C1470038F1A5 /* Embed Foundation Extensions */,
+				1385EC862EA0C2AF0038F1A5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				1385EC642EA0C1470038F1A5 /* PBXTargetDependency */,
+				1385EC842EA0C2AF0038F1A5 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				13750B5F2EA05FFB00E6673F /* MoneyFeedback */,
@@ -228,6 +276,29 @@
 			productReference = 1385EC552EA0C1460038F1A5 /* MoneyFeedbackWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		1385EC712EA0C2AF0038F1A5 /* MoneyFeedbackInternal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1385EC882EA0C2AF0038F1A5 /* Build configuration list for PBXNativeTarget "MoneyFeedbackInternal" */;
+			buildPhases = (
+				1385EC6D2EA0C2AF0038F1A5 /* Headers */,
+				1385EC6E2EA0C2AF0038F1A5 /* Sources */,
+				1385EC6F2EA0C2AF0038F1A5 /* Frameworks */,
+				1385EC702EA0C2AF0038F1A5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				1385EC732EA0C2AF0038F1A5 /* MoneyFeedbackInternal */,
+			);
+			name = MoneyFeedbackInternal;
+			packageProductDependencies = (
+			);
+			productName = MoneyFeedbackInternal;
+			productReference = 1385EC722EA0C2AF0038F1A5 /* MoneyFeedbackInternal.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -246,6 +317,9 @@
 						CreatedOnToolsVersion = 26.3;
 					};
 					1385EC542EA0C1460038F1A5 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+					1385EC712EA0C2AF0038F1A5 = {
 						CreatedOnToolsVersion = 26.3;
 					};
 				};
@@ -267,6 +341,7 @@
 				13750B5C2EA05FFB00E6673F /* MoneyFeedback */,
 				133053852EA0847900211918 /* MoneyFeedbackTests */,
 				1385EC542EA0C1460038F1A5 /* MoneyFeedbackWidgetExtension */,
+				1385EC712EA0C2AF0038F1A5 /* MoneyFeedbackInternal */,
 			);
 		};
 /* End PBXProject section */
@@ -288,6 +363,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1385EC532EA0C1460038F1A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1385EC702EA0C2AF0038F1A5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -318,6 +400,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1385EC6E2EA0C2AF0038F1A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -330,6 +419,11 @@
 			isa = PBXTargetDependency;
 			target = 1385EC542EA0C1460038F1A5 /* MoneyFeedbackWidgetExtension */;
 			targetProxy = 1385EC632EA0C1470038F1A5 /* PBXContainerItemProxy */;
+		};
+		1385EC842EA0C2AF0038F1A5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1385EC712EA0C2AF0038F1A5 /* MoneyFeedbackInternal */;
+			targetProxy = 1385EC832EA0C2AF0038F1A5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -400,6 +494,22 @@
 			};
 			name = Release;
 		};
+		1385EC892EA0C2AF0038F1A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 1385EC732EA0C2AF0038F1A5 /* MoneyFeedbackInternal */;
+			baseConfigurationReferenceRelativePath = MoneyFeedbackInternal.xcconfig;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		1385EC8A2EA0C2AF0038F1A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 1385EC732EA0C2AF0038F1A5 /* MoneyFeedbackInternal */;
+			baseConfigurationReferenceRelativePath = MoneyFeedbackInternal.xcconfig;
+			buildSettings = {
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -435,6 +545,15 @@
 			buildConfigurations = (
 				1385EC672EA0C1470038F1A5 /* Debug */,
 				1385EC682EA0C1470038F1A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1385EC882EA0C2AF0038F1A5 /* Build configuration list for PBXNativeTarget "MoneyFeedbackInternal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1385EC892EA0C2AF0038F1A5 /* Debug */,
+				1385EC8A2EA0C2AF0038F1A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
