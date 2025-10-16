@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		136298CD2EA16E8F00084846 /* MoneyFeedbackInternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1385EC722EA0C2AF0038F1A5 /* MoneyFeedbackInternal.framework */; };
-		136298CE2EA16E8F00084846 /* MoneyFeedbackInternal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1385EC722EA0C2AF0038F1A5 /* MoneyFeedbackInternal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1385EC582EA0C1460038F1A5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1385EC572EA0C1460038F1A5 /* WidgetKit.framework */; };
 		1385EC5A2EA0C1460038F1A5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1385EC592EA0C1460038F1A5 /* SwiftUI.framework */; };
 		1385EC662EA0C1470038F1A5 /* MoneyFeedbackWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1385EC552EA0C1460038F1A5 /* MoneyFeedbackWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -49,17 +48,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		136298D12EA16E8F00084846 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				136298CE2EA16E8F00084846 /* MoneyFeedbackInternal.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		1385EC652EA0C1470038F1A5 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -282,7 +270,6 @@
 				1385EC512EA0C1460038F1A5 /* Sources */,
 				1385EC522EA0C1460038F1A5 /* Frameworks */,
 				1385EC532EA0C1460038F1A5 /* Resources */,
-				136298D12EA16E8F00084846 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
