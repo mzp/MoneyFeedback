@@ -15,14 +15,8 @@ public struct MoneyFeedbackWidget: Widget {
 
     public var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: MoneyFeedbackTimelineProvider()) { entry in
-            if #available(iOS 17.0, *) {
-                WidgetEntryView(entry: entry)
-                    .containerBackground(.fill.tertiary, for: .widget)
-            } else {
-                WidgetEntryView(entry: entry)
-                    .padding()
-                    .background()
-            }
+            WidgetEntryView(entry: entry)
+                .containerBackground(.fill.tertiary, for: .widget)
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
@@ -32,6 +26,6 @@ public struct MoneyFeedbackWidget: Widget {
 #Preview(as: .systemSmall) {
     MoneyFeedbackWidget()
 } timeline: {
-    SimpleEntry(date: .now, emoji: "😀")
-    SimpleEntry(date: .now, emoji: "🤩")
+    SimpleEntry(date: .now, paymentEvent: PaymentEvent(date: .now, amount: 1000))
+    SimpleEntry(date: .now, paymentEvent: PaymentEvent(date: .now, amount: 2500))
 }

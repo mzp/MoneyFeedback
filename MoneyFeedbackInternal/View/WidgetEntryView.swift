@@ -11,11 +11,10 @@ struct WidgetEntryView: View {
 
     var body: some View {
         VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
-
-            Text("Emoji:")
-            Text(entry.emoji)
+            Text(entry.paymentEvent.date, format: .dateTime.year().month().day())
+                .font(.caption)
+            Text(entry.paymentEvent.amount, format: .number)
+                .font(.title)
         }
     }
 }
