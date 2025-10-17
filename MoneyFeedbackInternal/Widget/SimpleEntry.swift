@@ -1,6 +1,6 @@
 //
 //  SimpleEntry.swift
-//  MoneyFeedback
+//  MoneyFeedbackInternal
 //
 //  Created by mzp on 10/16/25.
 //

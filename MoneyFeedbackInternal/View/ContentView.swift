@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  MoneyFeedback
+//  MoneyFeedbackInternal
 //
 //  Created by mzp on 10/15/25.
 //

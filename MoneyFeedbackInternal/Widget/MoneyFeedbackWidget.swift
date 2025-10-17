@@ -1,6 +1,6 @@
 //
 //  MoneyFeedbackWidget.swift
-//  MoneyFeedbackWidget
+//  MoneyFeedbackInternal
 //
 //  Created by mzp on 10/15/25.
 //
