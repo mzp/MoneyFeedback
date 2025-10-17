@@ -80,6 +80,7 @@
 		1385EC592EA0C1460038F1A5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		1385EC722EA0C2AF0038F1A5 /* MoneyFeedbackInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MoneyFeedbackInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13D9585D2EA085CB00F740FC /* MoneyFeedback.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MoneyFeedback.xctestplan; sourceTree = "<group>"; };
+		13E13C9C2EA1D53B00BB5DDF /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -168,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				13D9585D2EA085CB00F740FC /* MoneyFeedback.xctestplan */,
+				13E13C9C2EA1D53B00BB5DDF /* CLAUDE.md */,
 				13D1C9C82EA0659F00C65B09 /* .github */,
 				13D1C9BC2EA0614800C65B09 /* Configurations */,
 				13750B5F2EA05FFB00E6673F /* MoneyFeedback */,
