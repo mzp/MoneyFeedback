@@ -1,9 +1,9 @@
-// Widget.xcconfig
+// MoneyFeedbackWidget.xcconfig
 // Widget extension build settings for MoneyFeedback
 
-// MARK: - Asset catalog
-ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor
-ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground
+// MARK: - Product configuration
+PRODUCT_BUNDLE_IDENTIFIER = jp.mzp.MoneyFeedback.MoneyFeedbackWidget
+PRODUCT_NAME = $(TARGET_NAME)
 
 // MARK: - Code signing
 CODE_SIGN_STYLE = Automatic
@@ -12,35 +12,27 @@ CODE_SIGN_STYLE = Automatic
 CURRENT_PROJECT_VERSION = 1
 MARKETING_VERSION = 1.0
 
-// MARK: - Debug information (Release-specific)
-DEBUG_INFORMATION_FORMAT = dwarf-with-dsym
+// MARK: - Asset catalog
+ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor
+ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground
 
-// MARK: - Assertions (Release-specific)
-ENABLE_NS_ASSERTIONS = NO
-
-// MARK: - Info.plist configuration
+// MARK: - Info.plist generation
 GENERATE_INFOPLIST_FILE = YES
 INFOPLIST_FILE = MoneyFeedbackWidget/Info.plist
 INFOPLIST_KEY_CFBundleDisplayName = MoneyFeedbackWidget
 INFOPLIST_KEY_NSHumanReadableCopyright =
 
-// MARK: - Deployment target
+// MARK: - Deployment targets
 IPHONEOS_DEPLOYMENT_TARGET = 26.0
 
-// MARK: - Runtime search paths (widget-specific)
-LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks @executable_path/../../Frameworks
-
-// MARK: - Metal (Release-specific)
-MTL_ENABLE_DEBUG_INFO = NO
-
-// MARK: - Product configuration
-PRODUCT_BUNDLE_IDENTIFIER = jp.mzp.MoneyFeedback.MoneyFeedbackWidget
-PRODUCT_NAME = $(TARGET_NAME)
-
-// MARK: - SDK configuration
+// MARK: - SDK and platform support
 SDKROOT = auto
 SKIP_INSTALL = YES
 SUPPORTED_PLATFORMS = iphoneos iphonesimulator
+TARGETED_DEVICE_FAMILY = 1,2
+
+// MARK: - Runtime search paths
+LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks @executable_path/../../Frameworks
 
 // MARK: - String catalogs
 STRING_CATALOG_GENERATE_SYMBOLS = YES
@@ -51,17 +43,20 @@ SWIFT_EMIT_LOC_STRINGS = YES
 SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES
 SWIFT_VERSION = 5.0
 
-// MARK: - Device families
-TARGETED_DEVICE_FAMILY = 1,2
+// MARK: - Debug information
+DEBUG_INFORMATION_FORMAT = dwarf-with-dsym
+
+// MARK: - Assertions
+ENABLE_NS_ASSERTIONS = NO
+
+// MARK: - Metal
+MTL_ENABLE_DEBUG_INFO = NO
 
 // MARK: - Product validation
 VALIDATE_PRODUCT = YES
 
-// MARK: - Sandbox
+// MARK: - Sandbox and security
 ENABLE_APP_SANDBOX = YES
-
 ENABLE_HARDENED_RUNTIME = YES
-
 ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES
-
 REGISTER_APP_GROUPS = YES
