@@ -23,9 +23,10 @@ struct TaxReturnTests {
         let taxReturn = TaxReturn(year: 2025, federalTax: 10_000, stateTax: 5_000.0)
         context.insert(taxReturn)
 
+        let year = taxReturn.year
         let results = try context.fetch(
             FetchDescriptor<TaxReturn>(
-                predicate: #Predicate { $0.year == 2025 }
+                predicate: #Predicate { $0.year == year }
             ))
         #expect(results.first?.federalTax == taxReturn.federalTax)
         #expect(results.first?.stateTax == taxReturn.stateTax)

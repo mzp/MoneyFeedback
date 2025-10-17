@@ -20,3 +20,13 @@ class TaxReturn {
         self.stateTax = stateTax
     }
 }
+
+extension TaxReturn: CustomStringConvertible, CustomDebugStringConvertible {
+    var description: String {
+        return "TaxReturn(year: \(year), federalTax: \(federalTax), stateTax: \(stateTax))"
+    }
+
+    var debugDescription: String {
+        return description
+    }
+}
