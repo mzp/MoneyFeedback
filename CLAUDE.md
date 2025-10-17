@@ -70,6 +70,32 @@ Build configurations use xcconfig files in `Configurations/`:
 
 Custom logging using OSLog framework defined in `MoneyFeedbackInternal/Extensions/OSLog.swift`.
 
+**Log Message Format:**
+All log messages must follow this format:
+```swift
+Logger.mfData.log("\(Self.self).\(#function) Your message here")
+```
+
+This format includes:
+- `\(Self.self)`: The type name (struct/class)
+- `\(#function)`: The function name
+- The descriptive message
+
+**Prefer Logging Over Comments:**
+Instead of using comments to explain code behavior, use logging statements to document execution flow. This provides runtime visibility and makes debugging easier.
+
+Bad example:
+```swift
+// Fetch the latest payment event from database
+let events = try modelContext.fetch(descriptor)
+```
+
+Good example:
+```swift
+Logger.mfData.log("\(Self.self).\(#function) Fetch latest payment event")
+let events = try modelContext.fetch(descriptor)
+```
+
 ## Testing
 
 Tests use Swift Testing framework (not XCTest). Test files are in `MoneyFeedbackTests/` and use the `@testable import MoneyFeedbackInternal` pattern.

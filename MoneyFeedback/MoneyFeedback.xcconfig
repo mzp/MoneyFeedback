@@ -7,6 +7,7 @@ PRODUCT_NAME = $(TARGET_NAME)
 
 // MARK: - Code signing
 CODE_SIGN_STYLE = Automatic
+CODE_SIGN_ENTITLEMENTS = MoneyFeedback/MoneyFeedback.entitlements
 
 // MARK: - Versioning
 CURRENT_PROJECT_VERSION = 1

@@ -26,6 +26,6 @@ public struct MoneyFeedbackWidget: Widget {
 #Preview(as: .systemSmall) {
     MoneyFeedbackWidget()
 } timeline: {
-    SimpleEntry(date: .now, paymentEvent: PaymentEvent(date: .now, amount: 1000))
-    SimpleEntry(date: .now, paymentEvent: PaymentEvent(date: .now, amount: 2500))
+    SimpleEntry(date: .now, paymentEvent: PaymentEvent(date: .distantFuture, amount: 1000))
+    SimpleEntry(date: .now, paymentEvent: PaymentEvent(date: .distantFuture, amount: 2500))
 }

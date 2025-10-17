@@ -27,53 +27,59 @@ struct ContentView: View {
 
             Section {
                 Button("Save") {
-                    savePaymentEvent()
+                    save()
                 }
 
                 if latestPaymentEvent != nil {
                     Button("Clear", role: .destructive) {
-                        deletePaymentEvent()
+                        clear()
                     }
                 }
             }
         }
         .onAppear {
-            loadLatestPaymentEvent()
+            fetch()
         }
     }
 
-    private func loadLatestPaymentEvent() {
-        let descriptor = FetchDescriptor<PaymentEvent>(
-            sortBy: [SortDescriptor(\.date, order: .reverse)]
-        )
-        latestPaymentEvent = try? modelContext.fetch(descriptor).first
-
-        if let latest = latestPaymentEvent {
-            date = latest.date
-            amount = latest.amount.description
-            Logger.mfData.log("Loaded latest payment event: \(latest, privacy: .private)")
+    private func fetch() {
+        do {
+            let descriptor = FetchDescriptor<PaymentEvent>(
+                sortBy: [SortDescriptor(\.date, order: .reverse)]
+            )
+            let events = try modelContext.fetch(descriptor)
+            if let latest = events.first {
+                latestPaymentEvent = latest
+                date = latest.date
+                amount = latest.amount.description
+                Logger.mfData.log("\(Self.self).\(#function) Loaded latest payment event: \(latest, privacy: .private)")
+            } else {
+                Logger.mfData.warning("\(Self.self).\(#function) No payment events found")
+            }
+        } catch {
+            Logger.mfData.error("\(Self.self).\(#function) Failed to fetch payment events: \(error.localizedDescription)")
         }
     }
 
-    private func savePaymentEvent() {
+    private func save() {
         let paymentAmount = Decimal(string: amount) ?? 0
 
         if let existing = latestPaymentEvent {
-            Logger.mfData.log("Update existing payment event")
+            Logger.mfData.log("\(Self.self).\(#function) Update existing payment event")
             existing.date = date
             existing.amount = paymentAmount
         } else {
-            Logger.mfData.log("Create new payment event")
+            Logger.mfData.log("\(Self.self).\(#function) Create new payment event")
             let newEvent = PaymentEvent(date: date, amount: paymentAmount)
             modelContext.insert(newEvent)
         }
 
-        loadLatestPaymentEvent()
+        fetch()
     }
 
-    private func deletePaymentEvent() {
+    private func clear() {
         if let existing = latestPaymentEvent {
-            Logger.mfData.log("Delete payment event")
+            Logger.mfData.log("\(Self.self).\(#function) Delete payment event")
             modelContext.delete(existing)
             latestPaymentEvent = nil
             date = Date()
