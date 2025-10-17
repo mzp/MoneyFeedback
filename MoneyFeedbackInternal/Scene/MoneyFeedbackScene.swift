@@ -16,7 +16,7 @@ public struct MoneyFeedbackScene: Scene {
         WindowGroup {
             ContentView()
                 .modelContainer(for: [
-                    TaxReturn.self
+                    PaymentEvent.self
                 ])
         }
     }

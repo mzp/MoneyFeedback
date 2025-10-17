@@ -12,72 +12,73 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
 
-    let year: Int
-
-    @State private var federalTax = ""
-    @State private var stateTax = ""
-    @State private var taxReturns: [TaxReturn] = []
-
-    init(year: Int = 2024) {
-        self.year = year
-    }
-
-    var existingTaxReturn: TaxReturn? {
-        taxReturns.first
-    }
+    @State private var date = Date()
+    @State private var amount = ""
+    @State private var latestPaymentEvent: PaymentEvent?
 
     var body: some View {
         Form {
-            Section("Tax Amount (\(year, format: .number.grouping(.never)))") {
-                TextField("Federal Tax", text: $federalTax)
-                    .keyboardType(.decimalPad)
+            Section("Payment Details") {
+                DatePicker("Date", selection: $date, displayedComponents: .date)
 
-                TextField("State Tax", text: $stateTax)
+                TextField("Amount", text: $amount)
                     .keyboardType(.decimalPad)
             }
 
             Section {
                 Button("Save") {
-                    saveTaxReturn()
+                    savePaymentEvent()
+                }
+
+                if latestPaymentEvent != nil {
+                    Button("Clear", role: .destructive) {
+                        deletePaymentEvent()
+                    }
                 }
             }
         }
         .onAppear {
-            loadTaxReturns()
-            loadExistingData()
+            loadLatestPaymentEvent()
         }
     }
 
-    private func loadTaxReturns() {
-        let descriptor = FetchDescriptor<TaxReturn>(
-            predicate: #Predicate { $0.year == year }
+    private func loadLatestPaymentEvent() {
+        let descriptor = FetchDescriptor<PaymentEvent>(
+            sortBy: [SortDescriptor(\.date, order: .reverse)]
         )
-        taxReturns = (try? modelContext.fetch(descriptor)) ?? []
-        Logger.mfData.log("Tax returns loaded: \(taxReturns, privacy: .private)")
-    }
+        latestPaymentEvent = try? modelContext.fetch(descriptor).first
 
-    private func loadExistingData() {
-        if let existing = existingTaxReturn {
-            federalTax = existing.federalTax.description
-            stateTax = existing.stateTax.description
-            Logger.mfData.log("Update form from \(existing, privacy: .private)")
+        if let latest = latestPaymentEvent {
+            date = latest.date
+            amount = latest.amount.description
+            Logger.mfData.log("Loaded latest payment event: \(latest, privacy: .private)")
         }
     }
 
-    private func saveTaxReturn() {
-        let federal = Decimal(string: federalTax) ?? 0
-        let state = Decimal(string: stateTax) ?? 0
+    private func savePaymentEvent() {
+        let paymentAmount = Decimal(string: amount) ?? 0
 
-        if let existing = existingTaxReturn {
-            Logger.mfData.log("Update existing record")
-            existing.federalTax = federal
-            existing.stateTax = state
+        if let existing = latestPaymentEvent {
+            Logger.mfData.log("Update existing payment event")
+            existing.date = date
+            existing.amount = paymentAmount
         } else {
-            Logger.mfData.log("Create new record")
-            let newTaxReturn = TaxReturn(year: year, federalTax: federal, stateTax: state)
-            modelContext.insert(newTaxReturn)
+            Logger.mfData.log("Create new payment event")
+            let newEvent = PaymentEvent(date: date, amount: paymentAmount)
+            modelContext.insert(newEvent)
         }
-        loadTaxReturns()
+
+        loadLatestPaymentEvent()
+    }
+
+    private func deletePaymentEvent() {
+        if let existing = latestPaymentEvent {
+            Logger.mfData.log("Delete payment event")
+            modelContext.delete(existing)
+            latestPaymentEvent = nil
+            date = Date()
+            amount = ""
+        }
     }
 }
 
