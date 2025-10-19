@@ -1,0 +1,13 @@
+// ObjectiveC.xcconfig
+// Objective-C settings
+
+// MARK: - Objective-C
+
+// Enable strict message send checking
+ENABLE_STRICT_OBJC_MSGSEND = YES
+
+// Enable Automatic Reference Counting
+CLANG_ENABLE_OBJC_ARC = YES
+
+// Enable weak references in ARC
+CLANG_ENABLE_OBJC_WEAK = YES

@@ -1,0 +1,18 @@
+// SDK.xcconfig
+// Architecture and SDK settings
+
+// MARK: - Architecture
+
+// The base SDK used for building the project
+SDKROOT = iphoneos
+
+// Platforms that can be built for
+SUPPORTED_PLATFORMS = iphoneos iphonesimulator
+
+// Device types supported (1=iPhone, 2=iPad)
+TARGETED_DEVICE_FAMILY = 1,2
+
+// MARK: - Deployment Target
+
+// Minimum iOS version required to run the app
+IPHONEOS_DEPLOYMENT_TARGET = 26.0

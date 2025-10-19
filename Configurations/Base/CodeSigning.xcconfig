@@ -1,0 +1,18 @@
+// CodeSigning.xcconfig
+// Code signing and versioning settings
+
+// MARK: - Code Signing
+
+// Code signing method (Automatic/Manual)
+CODE_SIGN_STYLE = Automatic
+
+// Team ID for code signing
+DEVELOPMENT_TEAM = VG2YYSKSHY
+
+// MARK: - Versioning
+
+// Build number
+CURRENT_PROJECT_VERSION = 1
+
+// User-visible version number
+MARKETING_VERSION = 1.0
