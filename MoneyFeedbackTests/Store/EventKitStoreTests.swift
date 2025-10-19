@@ -5,8 +5,8 @@
 //  Created by mzp on 10/18/25.
 //
 
-import Testing
 import Foundation
+import Testing
 
 @testable import MoneyFeedbackInternal
 
@@ -25,14 +25,14 @@ struct EventKitStoreTests {
         let testEvent = PaymentEvent(
             id: UUID().uuidString,
             title: "Test Payment",
-            amount: "¥1000",
+            amount: 1000,
             date: Date()
         )
 
         try await store.create(paymentEvent: testEvent)
 
         let events = try await store.fetch()
-        #expect(events.contains(where: { $0.title == "Test Payment" && $0.amount == "¥1000" }))
+        #expect(events.contains(where: { $0.title == "Test Payment" && $0.amount == 1000 }))
     }
 
     @Test func update() async throws {
@@ -43,14 +43,15 @@ struct EventKitStoreTests {
         let originalEvent = PaymentEvent(
             id: UUID().uuidString,
             title: "Original Payment",
-            amount: "¥2000",
+            amount: 2000,
             date: Date()
         )
         try await store.create(paymentEvent: originalEvent)
 
         // Fetch to get the actual ID from EventKit
         let fetchedEvents = try await store.fetch()
-        guard let createdEvent = fetchedEvents.first(where: { $0.title == "Original Payment" }) else {
+        guard let createdEvent = fetchedEvents.first(where: { $0.title == "Original Payment" })
+        else {
             Issue.record("Failed to find created event")
             return
         }
@@ -59,14 +60,16 @@ struct EventKitStoreTests {
         let updatedEvent = PaymentEvent(
             id: createdEvent.id,
             title: "Updated Payment",
-            amount: "¥3000",
+            amount: 3000,
             date: Date()
         )
         try await store.update(paymentEvent: updatedEvent)
 
         // Verify update
         let eventsAfterUpdate = try await store.fetch()
-        #expect(eventsAfterUpdate.contains(where: { $0.title == "Updated Payment" && $0.amount == "¥3000" }))
+        #expect(
+            eventsAfterUpdate.contains(where: { $0.title == "Updated Payment" && $0.amount == 3000 }
+            ))
         #expect(!eventsAfterUpdate.contains(where: { $0.title == "Original Payment" }))
     }
 
@@ -78,7 +81,7 @@ struct EventKitStoreTests {
         let testEvent = PaymentEvent(
             id: UUID().uuidString,
             title: "Complete Test",
-            amount: "¥4000",
+            amount: 4000,
             date: Date()
         )
         try await store.create(paymentEvent: testEvent)
@@ -106,7 +109,7 @@ struct EventKitStoreTests {
         let testEvent = PaymentEvent(
             id: UUID().uuidString,
             title: "Delete Test",
-            amount: "¥5000",
+            amount: 5000,
             date: Date()
         )
         try await store.create(paymentEvent: testEvent)
@@ -124,5 +127,28 @@ struct EventKitStoreTests {
         // Verify it's deleted
         let eventsAfterDelete = try await store.fetch()
         #expect(!eventsAfterDelete.contains(where: { $0.title == "Delete Test" }))
+    }
+
+    @Test func parsesCurrencyFormat() async throws {
+        let store = EventKitStore()
+        _ = try await store.requestAccess()
+
+        // Create event with specific amount
+        let testEvent = PaymentEvent(
+            id: UUID().uuidString,
+            title: "Tax return",
+            amount: 1500,
+            date: Date()
+        )
+        try await store.create(paymentEvent: testEvent)
+
+        // Fetch and verify
+        let events = try await store.fetch()
+        guard let fetchedEvent = events.first(where: { $0.title == "Tax return" }) else {
+            Issue.record("Failed to find created event")
+            return
+        }
+
+        #expect(fetchedEvent.amount == 1500)
     }
 }

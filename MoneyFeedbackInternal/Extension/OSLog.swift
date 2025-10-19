@@ -8,5 +8,6 @@
 import OSLog
 
 extension Logger {
-    static let mfEventKit = Logger(subsystem: "com.moneyfeedback.MoneyFeedback", category: "EventKit")
+    static let mfEventKit = Logger(
+        subsystem: "com.moneyfeedback.MoneyFeedback", category: "EventKit")
 }

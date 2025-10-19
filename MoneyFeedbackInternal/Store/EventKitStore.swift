@@ -8,22 +8,32 @@
 import EventKit
 import Foundation
 
-extension PaymentEvent : Identifiable {
+extension PaymentEvent: Identifiable {
     var combinedTitle: String {
-        "\(title) - \(amount)"
+        "\(title) - $\(amount)"
     }
 
-    static func parse(from reminderTitle: String) -> (title: String, amount: String)? {
+    static func parse(from reminderTitle: String) -> (title: String, amount: Decimal)? {
         let components = reminderTitle.split(separator: " - ", maxSplits: 1)
         guard components.count == 2 else { return nil }
-        return (String(components[0]), String(components[1]))
+
+        let title = String(components[0])
+        let amountString = String(components[1])
+
+        // Remove $ prefix if present
+        let cleanedString =
+            amountString.hasPrefix("$") ? String(amountString.dropFirst()) : amountString
+        guard let amount = Decimal(string: cleanedString) else { return nil }
+
+        return (title, amount)
     }
 
     init?(from reminder: EKReminder) {
         guard let reminderTitle = reminder.title,
-              let (title, amount) = PaymentEvent.parse(from: reminderTitle),
-              let dueDateComponents = reminder.dueDateComponents,
-              let date = Calendar.current.date(from: dueDateComponents) else {
+            let (title, amount) = PaymentEvent.parse(from: reminderTitle),
+            let dueDateComponents = reminder.dueDateComponents,
+            let date = Calendar.current.date(from: dueDateComponents)
+        else {
             return nil
         }
         self.id = reminder.calendarItemIdentifier
@@ -35,14 +45,16 @@ extension PaymentEvent : Identifiable {
     func toEKReminder(in eventStore: EKEventStore) -> EKReminder {
         let reminder = EKReminder(eventStore: eventStore)
         reminder.title = combinedTitle
-        reminder.dueDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
+        reminder.dueDateComponents = Calendar.current.dateComponents(
+            [.year, .month, .day], from: date)
         reminder.calendar = eventStore.defaultCalendarForNewReminders()
         return reminder
     }
 
     func update(reminder: EKReminder) {
         reminder.title = combinedTitle
-        reminder.dueDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
+        reminder.dueDateComponents = Calendar.current.dateComponents(
+            [.year, .month, .day], from: date)
     }
 }
 
@@ -82,7 +94,8 @@ class EventKitStore {
     }
 
     func update(paymentEvent: PaymentEvent) async throws {
-        guard let reminder = eventStore.calendarItem(withIdentifier: paymentEvent.id) as? EKReminder else {
+        guard let reminder = eventStore.calendarItem(withIdentifier: paymentEvent.id) as? EKReminder
+        else {
             throw PaymentEventStoreError.eventNotFound
         }
 
@@ -91,7 +104,8 @@ class EventKitStore {
     }
 
     func complete(paymentEvent: PaymentEvent) async throws {
-        guard let reminder = eventStore.calendarItem(withIdentifier: paymentEvent.id) as? EKReminder else {
+        guard let reminder = eventStore.calendarItem(withIdentifier: paymentEvent.id) as? EKReminder
+        else {
             throw PaymentEventStoreError.eventNotFound
         }
 
@@ -100,7 +114,8 @@ class EventKitStore {
     }
 
     func delete(paymentEvent: PaymentEvent) async throws {
-        guard let reminder = eventStore.calendarItem(withIdentifier: paymentEvent.id) as? EKReminder else {
+        guard let reminder = eventStore.calendarItem(withIdentifier: paymentEvent.id) as? EKReminder
+        else {
             throw PaymentEventStoreError.eventNotFound
         }
 

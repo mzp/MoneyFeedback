@@ -6,9 +6,8 @@
 //
 
 import EventKit
-import SwiftUI
 import OSLog
-
+import SwiftUI
 
 public struct PaymentEventListView: View {
     @State private var events: [PaymentEvent] = []
@@ -31,18 +30,17 @@ public struct PaymentEventListView: View {
             } else {
                 ForEach(events, id: \.id) { event in
                     VStack(alignment: .leading) {
-                        Text(event.title)
-                            .font(.headline)
                         HStack {
-                            Text(event.amount)
-                                .font(.subheadline)
-                                .foregroundColor(.blue)
-                            Text(event.date, style: .date)
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
+                            Text(event.title)
+                                .font(.headline)
+
+                            Text(event.amount, format: .currency(code: "USD"))
+                                .font(.headline)
                         }
+                        Text(event.date, style: .date)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
                     }
-                    .contentShape(Rectangle())
                     .onTapGesture {
                         editingEvent = event
                     }
@@ -103,11 +101,14 @@ public struct PaymentEventListView: View {
                 events = try await store.fetch()
                 errorMessage = nil
             } else {
-                Logger.mfEventKit.error("\(Self.self).\(#function) Access denied for payment events")
+                Logger.mfEventKit.error(
+                    "\(Self.self).\(#function) Access denied for payment events")
                 errorMessage = "Access denied"
             }
         } catch {
-            Logger.mfEventKit.error("\(Self.self).\(#function) Failed to load payment events: \(error.localizedDescription)")
+            Logger.mfEventKit.error(
+                "\(Self.self).\(#function) Failed to load payment events: \(error.localizedDescription)"
+            )
             errorMessage = "Error: \(error.localizedDescription)"
         }
     }
@@ -117,7 +118,9 @@ public struct PaymentEventListView: View {
             try await store.complete(paymentEvent: paymentEvent)
             await load()
         } catch {
-            Logger.mfEventKit.error("\(Self.self).\(#function) Failed to complete payment event: \(error.localizedDescription)")
+            Logger.mfEventKit.error(
+                "\(Self.self).\(#function) Failed to complete payment event: \(error.localizedDescription)"
+            )
             errorMessage = "Failed to complete: \(error.localizedDescription)"
         }
     }
@@ -127,7 +130,9 @@ public struct PaymentEventListView: View {
             try await store.delete(paymentEvent: paymentEvent)
             await load()
         } catch {
-            Logger.mfEventKit.error("\(Self.self).\(#function) Failed to delete payment event: \(error.localizedDescription)")
+            Logger.mfEventKit.error(
+                "\(Self.self).\(#function) Failed to delete payment event: \(error.localizedDescription)"
+            )
             errorMessage = "Failed to delete: \(error.localizedDescription)"
         }
     }
@@ -143,13 +148,24 @@ struct PaymentEventEditView: View {
     @State private var dueDate: Date
     @Environment(\.dismiss) private var dismiss
 
-    init(store: EventKitStore, paymentEvent: PaymentEvent? = nil, onSave: @escaping () async -> Void) {
+    init(
+        store: EventKitStore, paymentEvent: PaymentEvent? = nil, onSave: @escaping () async -> Void
+    ) {
         self.store = store
         self.paymentEvent = paymentEvent
         self.onSave = onSave
 
         _title = State(initialValue: paymentEvent?.title ?? "")
-        _amount = State(initialValue: paymentEvent?.amount ?? "")
+        if let paymentAmount = paymentEvent?.amount {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            formatter.minimumFractionDigits = 0
+            formatter.maximumFractionDigits = 2
+            _amount = State(
+                initialValue: formatter.string(from: paymentAmount as NSDecimalNumber) ?? "")
+        } else {
+            _amount = State(initialValue: "")
+        }
         _dueDate = State(initialValue: paymentEvent?.date ?? Date())
     }
 
@@ -159,6 +175,7 @@ struct PaymentEventEditView: View {
                 Section {
                     TextField("Title", text: $title)
                     TextField("Amount", text: $amount)
+                        .keyboardType(.decimalPad)
                 }
 
                 Section {
@@ -187,18 +204,28 @@ struct PaymentEventEditView: View {
 
     private func save() async {
         do {
+            guard let decimalAmount = Decimal(string: amount) else {
+                Logger.mfEventKit.error(
+                    "\(Self.self).\(#function) Invalid amount format: \(amount)")
+                return
+            }
+
             if let oldEvent = paymentEvent {
-                let newEvent = PaymentEvent(id: oldEvent.id, title: title, amount: amount, date: dueDate)
+                let newEvent = PaymentEvent(
+                    id: oldEvent.id, title: title, amount: decimalAmount, date: dueDate)
                 try await store.update(paymentEvent: newEvent)
             } else {
-                let newEvent = PaymentEvent(id: UUID().uuidString, title: title, amount: amount, date: dueDate)
+                let newEvent = PaymentEvent(
+                    id: UUID().uuidString, title: title, amount: decimalAmount, date: dueDate)
                 try await store.create(paymentEvent: newEvent)
             }
 
             await onSave()
             dismiss()
         } catch {
-            Logger.mfEventKit.error("\(Self.self).\(#function) Failed to save payment event: \(error.localizedDescription)")
+            Logger.mfEventKit.error(
+                "\(Self.self).\(#function) Failed to save payment event: \(error.localizedDescription)"
+            )
         }
     }
 }
