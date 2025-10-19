@@ -1,5 +1,5 @@
 //
-//  ReminderListView.swift
+//  PaymentEventListView.swift
 //  MoneyFeedbackInternal
 //
 //  Created by mzp on 10/18/25.
@@ -7,14 +7,16 @@
 
 import EventKit
 import SwiftUI
+import OSLog
 
-public struct ReminderListView: View {
-    @State private var reminders: [EKReminder] = []
+
+public struct PaymentEventListView: View {
+    @State private var events: [PaymentEvent] = []
     @State private var isAuthorized = false
     @State private var errorMessage: String?
     @State private var showingAddSheet = false
-    @State private var editingReminder: EKReminder?
-    private let store = ReminderStore()
+    @State private var editingEvent: PaymentEvent?
+    private let store = EventKitStore()
 
     public init() {}
 
@@ -23,29 +25,31 @@ public struct ReminderListView: View {
             if let errorMessage = errorMessage {
                 Text(errorMessage)
                     .foregroundColor(.red)
-            } else if reminders.isEmpty {
-                Text("No reminders")
+            } else if events.isEmpty {
+                Text("No payment events")
                     .foregroundColor(.secondary)
             } else {
-                ForEach(reminders, id: \.calendarItemIdentifier) { reminder in
+                ForEach(events, id: \.id) { event in
                     VStack(alignment: .leading) {
-                        Text(reminder.title ?? "")
+                        Text(event.title)
                             .font(.headline)
-                        if let dueDateComponents = reminder.dueDateComponents,
-                           let date = Calendar.current.date(from: dueDateComponents) {
-                            Text(date, style: .date)
+                        HStack {
+                            Text(event.amount)
+                                .font(.subheadline)
+                                .foregroundColor(.blue)
+                            Text(event.date, style: .date)
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                         }
                     }
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        editingReminder = reminder
+                        editingEvent = event
                     }
                     .swipeActions(edge: .leading) {
                         Button {
                             Task {
-                                await completeReminder(reminder)
+                                await complete(paymentEvent: event)
                             }
                         } label: {
                             Label("Complete", systemImage: "checkmark.circle")
@@ -55,7 +59,7 @@ public struct ReminderListView: View {
                     .swipeActions(edge: .trailing) {
                         Button(role: .destructive) {
                             Task {
-                                await deleteReminder(reminder)
+                                await delete(paymentEvent: event)
                             }
                         } label: {
                             Label("Delete", systemImage: "trash")
@@ -64,7 +68,7 @@ public struct ReminderListView: View {
                 }
             }
         }
-        .navigationTitle("Reminders")
+        .navigationTitle("Payment Events")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
@@ -75,89 +79,78 @@ public struct ReminderListView: View {
             }
         }
         .task {
-            await loadReminders()
+            await load()
         }
         .refreshable {
-            await loadReminders()
+            await load()
         }
         .sheet(isPresented: $showingAddSheet) {
-            ReminderEditView(store: store) {
-                await loadReminders()
+            PaymentEventEditView(store: store) {
+                await load()
             }
         }
-        .sheet(item: $editingReminder) { reminder in
-            ReminderEditView(store: store, reminder: reminder) {
-                await loadReminders()
+        .sheet(item: $editingEvent) { event in
+            PaymentEventEditView(store: store, paymentEvent: event) {
+                await load()
             }
         }
     }
 
-    private func loadReminders() async {
+    private func load() async {
         do {
             isAuthorized = try await store.requestAccess()
             if isAuthorized {
-                reminders = try await store.fetchReminders()
+                events = try await store.fetch()
                 errorMessage = nil
             } else {
+                Logger.mfEventKit.error("\(Self.self).\(#function) Access denied for payment events")
                 errorMessage = "Access denied"
             }
         } catch {
+            Logger.mfEventKit.error("\(Self.self).\(#function) Failed to load payment events: \(error.localizedDescription)")
             errorMessage = "Error: \(error.localizedDescription)"
         }
     }
 
-    private func completeReminder(_ reminder: EKReminder) async {
+    private func complete(paymentEvent: PaymentEvent) async {
         do {
-            try await store.updateReminder(reminder, isCompleted: true)
-            await loadReminders()
+            try await store.complete(paymentEvent: paymentEvent)
+            await load()
         } catch {
+            Logger.mfEventKit.error("\(Self.self).\(#function) Failed to complete payment event: \(error.localizedDescription)")
             errorMessage = "Failed to complete: \(error.localizedDescription)"
         }
     }
 
-    private func deleteReminder(_ reminder: EKReminder) async {
+    private func delete(paymentEvent: PaymentEvent) async {
         do {
-            try await store.deleteReminder(reminder)
-            await loadReminders()
+            try await store.delete(paymentEvent: paymentEvent)
+            await load()
         } catch {
+            Logger.mfEventKit.error("\(Self.self).\(#function) Failed to delete payment event: \(error.localizedDescription)")
             errorMessage = "Failed to delete: \(error.localizedDescription)"
         }
     }
 }
 
-extension EKReminder: Identifiable {
-    public var id: String {
-        calendarItemIdentifier
-    }
-}
-
-struct ReminderEditView: View {
-    let store: ReminderStore
-    let reminder: EKReminder?
+struct PaymentEventEditView: View {
+    let store: EventKitStore
+    let paymentEvent: PaymentEvent?
     let onSave: () async -> Void
 
     @State private var title: String
-    @State private var notes: String
+    @State private var amount: String
     @State private var dueDate: Date
-    @State private var hasDueDate: Bool
     @Environment(\.dismiss) private var dismiss
 
-    init(store: ReminderStore, reminder: EKReminder? = nil, onSave: @escaping () async -> Void) {
+    init(store: EventKitStore, paymentEvent: PaymentEvent? = nil, onSave: @escaping () async -> Void) {
         self.store = store
-        self.reminder = reminder
+        self.paymentEvent = paymentEvent
         self.onSave = onSave
 
-        _title = State(initialValue: reminder?.title ?? "")
-        _notes = State(initialValue: reminder?.notes ?? "")
-
-        if let dueDateComponents = reminder?.dueDateComponents,
-           let date = Calendar.current.date(from: dueDateComponents) {
-            _dueDate = State(initialValue: date)
-            _hasDueDate = State(initialValue: true)
-        } else {
-            _dueDate = State(initialValue: Date())
-            _hasDueDate = State(initialValue: false)
-        }
+        _title = State(initialValue: paymentEvent?.title ?? "")
+        _amount = State(initialValue: paymentEvent?.amount ?? "")
+        _dueDate = State(initialValue: paymentEvent?.date ?? Date())
     }
 
     var body: some View {
@@ -165,18 +158,14 @@ struct ReminderEditView: View {
             Form {
                 Section {
                     TextField("Title", text: $title)
-                    TextField("Notes", text: $notes, axis: .vertical)
-                        .lineLimit(3...6)
+                    TextField("Amount", text: $amount)
                 }
 
                 Section {
-                    Toggle("Due Date", isOn: $hasDueDate)
-                    if hasDueDate {
-                        DatePicker("Date", selection: $dueDate, displayedComponents: [.date])
-                    }
+                    DatePicker("Due Date", selection: $dueDate, displayedComponents: [.date])
                 }
             }
-            .navigationTitle(reminder == nil ? "New Reminder" : "Edit Reminder")
+            .navigationTitle(paymentEvent == nil ? "New Payment" : "Edit Payment")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -190,7 +179,7 @@ struct ReminderEditView: View {
                             await save()
                         }
                     }
-                    .disabled(title.isEmpty)
+                    .disabled(title.isEmpty || amount.isEmpty)
                 }
             }
         }
@@ -198,33 +187,24 @@ struct ReminderEditView: View {
 
     private func save() async {
         do {
-            let dueDateComponents = hasDueDate ? Calendar.current.dateComponents([.year, .month, .day], from: dueDate) : nil
-
-            if let reminder = reminder {
-                try await store.updateReminder(
-                    reminder,
-                    title: title,
-                    notes: notes.isEmpty ? nil : notes,
-                    dueDate: dueDateComponents
-                )
+            if let oldEvent = paymentEvent {
+                let newEvent = PaymentEvent(id: oldEvent.id, title: title, amount: amount, date: dueDate)
+                try await store.update(paymentEvent: newEvent)
             } else {
-                _ = try await store.createReminder(
-                    title: title,
-                    notes: notes.isEmpty ? nil : notes,
-                    dueDate: dueDateComponents
-                )
+                let newEvent = PaymentEvent(id: UUID().uuidString, title: title, amount: amount, date: dueDate)
+                try await store.create(paymentEvent: newEvent)
             }
 
             await onSave()
             dismiss()
         } catch {
-            // Handle error
+            Logger.mfEventKit.error("\(Self.self).\(#function) Failed to save payment event: \(error.localizedDescription)")
         }
     }
 }
 
 #Preview {
     NavigationStack {
-        ReminderListView()
+        PaymentEventListView()
     }
 }
