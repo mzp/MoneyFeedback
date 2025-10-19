@@ -5,6 +5,7 @@
 //  Created by mzp on 10/15/25.
 //
 
+import EventKit
 import Foundation
 import Testing
 
