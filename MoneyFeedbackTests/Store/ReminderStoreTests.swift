@@ -10,14 +10,8 @@ import Testing
 @testable import MoneyFeedbackInternal
 
 struct ReminderStoreTests {
-    var store = ReminderStore()
-
-    @Test func requestAccessReturnsAuthorizationStatus() async throws {
-        let isAuthorized = try await store.requestAccess()
-        _ = isAuthorized
-    }
-
-    @Test func fetchRemindersReturnsArray() async throws {
+    @Test func fetchReminders() async throws {
+        let store = ReminderStore()
         _ = try await store.requestAccess()
         let reminders = try await store.fetchReminders()
         _ = reminders
