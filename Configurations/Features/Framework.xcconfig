@@ -1,0 +1,57 @@
+// Framework.xcconfig
+// Framework-related settings
+
+// MARK: - Architecture
+
+// Allow platform-specific variants
+ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES
+
+// MARK: - Build Options
+
+// Build module interfaces for library distribution
+BUILD_LIBRARY_FOR_DISTRIBUTION = YES
+
+// MARK: - Module Verifier
+
+// Enable module interface verification
+ENABLE_MODULE_VERIFIER = YES
+
+// Languages to verify
+MODULE_VERIFIER_SUPPORTED_LANGUAGES = objective-c objective-c++
+
+// Language standards to verify against
+MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = gnu17 gnu++20
+
+// Install Swift module interfaces
+SWIFT_INSTALL_MODULE = YES
+
+// Install Objective-C compatibility header
+SWIFT_INSTALL_OBJC_HEADER = NO
+
+// MARK: - Build Locations
+
+// Installation path for the built product
+INSTALL_PATH = $(LOCAL_LIBRARY_DIR)/Frameworks
+
+// Whether to skip installation during build
+SKIP_INSTALL = YES
+
+// MARK: - Linking
+
+// Dynamic library compatibility version
+DYLIB_COMPATIBILITY_VERSION = 1
+
+// Dynamic library current version
+DYLIB_CURRENT_VERSION = 1
+
+// Base name for dynamic library installation
+DYLIB_INSTALL_NAME_BASE = @rpath
+
+// Runtime search paths for dynamic libraries
+LD_RUNPATH_SEARCH_PATHS = @executable_path/Frameworks @loader_path/Frameworks
+
+// MARK: - Versioning
+
+// Versioning system for frameworks
+VERSIONING_SYSTEM = apple-generic
+VERSION_INFO_PREFIX =

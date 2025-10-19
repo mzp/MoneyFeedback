@@ -1,0 +1,7 @@
+// ObjectiveC.xcconfig
+// Objective-C settings
+
+// MARK: - Objective-C
+
+// Enable strict Objective-C message sending
+ENABLE_STRICT_OBJC_MSGSEND = YES

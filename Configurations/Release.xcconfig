@@ -1,13 +1,10 @@
 #include "Base.xcconfig"
 
-// MARK: - Debug information
+// MARK: - Build options
 DEBUG_INFORMATION_FORMAT = dwarf-with-dsym
 
-// MARK: - Assertions
+// MARK: - Clang
 ENABLE_NS_ASSERTIONS = NO
 
-// MARK: - Metal debug info
-MTL_ENABLE_DEBUG_INFO = NO
-
-// MARK: - Swift compilation
+// MARK: - Swift
 SWIFT_COMPILATION_MODE = wholemodule

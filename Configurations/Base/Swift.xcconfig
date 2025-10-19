@@ -1,0 +1,21 @@
+// Swift.xcconfig
+// Swift configuration settings
+
+// MARK: - Swift
+
+// Generate localized string metadata
+SWIFT_EMIT_LOC_STRINGS = YES
+
+// Enable upcoming Swift feature for member import visibility
+SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES
+
+// Swift language version
+SWIFT_VERSION = 5.0
+
+// MARK: - SwiftUI
+
+// Enable SwiftUI previews in Xcode
+ENABLE_PREVIEWS = YES
+
+// Default actor isolation for Swift concurrency
+SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor

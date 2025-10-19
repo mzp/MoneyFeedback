@@ -90,6 +90,13 @@
 			);
 			target = 1385EC542EA0C1460038F1A5 /* MoneyFeedbackWidgetExtension */;
 		};
+		13FF41602EA4786A00AE3971 /* Exceptions for "MoneyFeedback" folder in "MoneyFeedback" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 13750B5C2EA05FFB00E6673F /* MoneyFeedback */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -100,6 +107,9 @@
 		};
 		13750B5F2EA05FFB00E6673F /* MoneyFeedback */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				13FF41602EA4786A00AE3971 /* Exceptions for "MoneyFeedback" folder in "MoneyFeedback" target */,
+			);
 			path = MoneyFeedback;
 			sourceTree = "<group>";
 		};

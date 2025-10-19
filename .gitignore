@@ -2,7 +2,8 @@
 # System
 .DS_Store
 
-# Export
+# Xcodebuild
+/build
 /DistributionSummary.plist
 /ExportOptions.plist
 *.xcarchive

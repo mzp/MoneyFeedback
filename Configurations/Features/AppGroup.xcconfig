@@ -1,0 +1,8 @@
+// AppGroup.xcconfig
+// App group settings
+
+// Enable App Sandbox for security
+ENABLE_APP_SANDBOX = YES
+
+// Register app groups for shared data access
+REGISTER_APP_GROUPS = YES
